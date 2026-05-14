@@ -2,8 +2,11 @@
 // wk14_std_sort_sample.cpp
 //
 // Demos custom comparison function called by std::sort()
+//
+// #TODO 1) write a custom comparison function to be called by std::sort()
+// #TODO 2) call std::sort() to sort vector vfun in descending order of stars
+// #TODO 3) write a range-based for loop to display elements of vector vFun
 //------------------------------------------------------------------------------
-#include <algorithm>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -14,37 +17,12 @@
 struct FunMeter
 {
     std::string activity;
-    unsigned stars;
-
-    bool operator<(FunMeter& rhs)
-    {
-        return this->stars < rhs.stars;
-    }
-
-    bool operator>(FunMeter& rhs)
-    {
-        return this->stars > rhs.stars;
-    }
+    int stars;
 };
 
 //------------------------------------------------------------------------------
-// overloaded stream insertion operator <<
+// #TODO 1) write a custom comparison function to be called by std::sort()
 //------------------------------------------------------------------------------
-std::ostream& operator<<(std::ostream& os, const FunMeter& fm)
-{
-    std::string rating(fm.stars, '*');
-    std::cout << fm.activity << ": " << rating;
-
-    return os;
-}
-
-//------------------------------------------------------------------------------
-// custom comparison function will be called by std::sort()
-//------------------------------------------------------------------------------
-bool getMostFun(FunMeter& fun1, FunMeter& fun2)
-{
-    return fun1.stars > fun2.stars;
-}
 
 //------------------------------------------------------------------------------
 // entry point
@@ -52,33 +30,16 @@ bool getMostFun(FunMeter& fun1, FunMeter& fun2)
 int main()
 {
     std::vector<FunMeter> vFun = {
-          { "Finals week", 1 }
-        , { "My graduation day", 5 }
-        , { "Big Dipper roller coaster ride", 3 }
-        , { "A night at the opera", 2 }
-        , { "Beach bonfire with friends", 4 }
-        , { "Winning the Lotto", 5 }
+        { "finals week", 1 }
+        , { "my graduation day", 5 }
+        , { "roller coaster ride", 4 }
+        , { "a night at the opera", 2 }
+        , { "beach bonfire with friends", 3 }
     };
 
-    // sort vector in ascending order of stars
-    std::sort(vFun.begin(), vFun.end());
+    // #TODO 2) call std::sort() to sort vector vFun in descending order of stars
 
-    // display vector elements
-    std::cout << "\nFrom least to most fun:\n\n";
-    for (FunMeter& fm : vFun)
-    {
-        std::cout << fm << "\n";
-    }
-
-    // sort vector in descending order of stars
-    std::sort(vFun.begin(), vFun.end(), getMostFun);
-
-    // display vector elements
-    std::cout << "\nFrom most to least fun:\n\n";
-    for (FunMeter& fm : vFun)
-    {
-        std::cout << fm << "\n";
-    }
+    // #TODO 3) write a range-based for loop to display elements of vector vFun
 
     std::cout << "\nHappy Trails!\n";
 }
