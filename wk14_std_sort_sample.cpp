@@ -23,18 +23,19 @@ struct FunMeter
 //------------------------------------------------------------------------------
 // this function passed as a pointer
 //------------------------------------------------------------------------------
-void sayHello()
+bool sayHello()
 {
     std::cout << "Hello!\n";
+    return true;
 }
 
 //------------------------------------------------------------------------------
 // this function will call function passed as a pointer
 //------------------------------------------------------------------------------
-void demoFunctionPointer(void (*func)())
+bool demoFunctionPointer(bool (*func)())
 {
     // Call the function
-    func();
+    return func();
 }
 
 //------------------------------------------------------------------------------
@@ -47,7 +48,8 @@ void demoFunctionPointer(void (*func)())
 int main()
 {
     // demo function pointer - pass the function as an argument
-    demoFunctionPointer(sayHello);
+    if (demoFunctionPointer(sayHello))
+        std::cout << "sayHello returned true.\n";
 
     std::vector<FunMeter> vFun = {
         { "finals week", 1 }
