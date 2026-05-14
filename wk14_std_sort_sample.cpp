@@ -21,6 +21,23 @@ struct FunMeter
 };
 
 //------------------------------------------------------------------------------
+// this function passed as a pointer
+//------------------------------------------------------------------------------
+void sayHello()
+{
+    std::cout << "Hello!\n";
+}
+
+//------------------------------------------------------------------------------
+// this function will call function passed as a pointer
+//------------------------------------------------------------------------------
+void demoFunctionPointer(void (*func)())
+{
+    // Call the function
+    func();
+}
+
+//------------------------------------------------------------------------------
 // #TODO 1) write a custom comparison function to be called by std::sort()
 //------------------------------------------------------------------------------
 
@@ -29,6 +46,9 @@ struct FunMeter
 //------------------------------------------------------------------------------
 int main()
 {
+    // demo function pointer - pass the function as an argument
+    demoFunctionPointer(sayHello);
+
     std::vector<FunMeter> vFun = {
         { "finals week", 1 }
         , { "my graduation day", 5 }
