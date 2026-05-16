@@ -25,6 +25,11 @@ struct FunMeter
     {
         return this->stars > rhs.stars;
     }
+
+    // constructors
+    FunMeter() = default;
+    FunMeter(std::string str, unsigned n) : activity(str), stars(n)
+    { }
 };
 
 //------------------------------------------------------------------------------
